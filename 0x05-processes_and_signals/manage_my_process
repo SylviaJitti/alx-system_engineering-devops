@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script is displaying "Holberton School" 10 times
+# This script writes "I am alive" to the file /tmp/my_process and pauses for 2 seconds between every "I am alive"
 while true
 do
     sudo bash -c "echo \"I am alive!\" >> /tmp/my_process"
