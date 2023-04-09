@@ -2,11 +2,11 @@
 **0x0C. Web server**
 
 ## Author's Details.
-Name: *Wendy Munyasi.*
+Name: *Sylvia Jitti*
 
-Email: *wendymunyasi@gmail.com*
+Email: *sylviajitti@gmail.com*
 
-Tel:*+254707240068.*
+Tel:*+237656065784.*
 
 ##  Requirements
 
@@ -183,7 +183,3 @@ What DNS stands for and its main role.
   * When querying Nginx at its root `/` with a `GET` request (requesting a page) using `curl`, it must return a page that contains the string `Hello World!`.
   * The redirection must be a "301 Moved Permanently".
 ---
-
-## Collaborate
-
-To collaborate, reach me through my email address wendymunyasi@gmail.com.
