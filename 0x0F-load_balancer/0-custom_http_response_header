@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-# script that doubles the number of webservers and adds new configs
+# 404 Not Found Page
 
-# install nginx
-apt-get  update ; apt-get -y install nginx
+apt-get update
 
-string="http {\n\tadd_header X-Served-By \"$HOSTNAME\";"
-sudo sed -i "s/http {/$string/" /etc/nginx/nginx.conf
-# restart nginx
+#I am installing nginx on my server
+apt-get install -y nginx
+
+echo "Hello World!" | sudo tee /var/www/html/index.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+#I amcreating custom header to my website
+sudo sed -i "/^http {/a \    add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+# restarting my server
 sudo service nginx restart
