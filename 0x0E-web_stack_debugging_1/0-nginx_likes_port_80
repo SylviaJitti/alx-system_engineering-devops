@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 # Bash script with commands to automate your fix.
+# fix Ubuntu container's to listen on port 80
 
+#removing default file
 sudo rm /etc/nginx/sites-enabled/default
 
+#creating symbolic link from site available to site enable
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
+#restarting nginx
 sudo service nginx restart
