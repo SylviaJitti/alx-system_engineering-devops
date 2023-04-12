@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #+    Listens on port 80.
 #+    Returns a page containing "Hello world!" when queried
 #+     at the root with a curl GET request.
