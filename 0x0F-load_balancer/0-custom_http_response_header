@@ -10,6 +10,10 @@ sudo apt-get install nginx -y
 # Starting nginx service
 sudo service nginx start
 #
+echo "Hello World!" | sudo tee /var/www/html/index.html
+sed -i "/server_name _;/ a\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
+sed -i "/redirect_me/ a\\\terror_page 404 /custom_404.html;" /etc/nginx/sites-available/default
 # Allowing nginx on firewall
 sudo ufw allow 'Nginx HTTP'
 #
