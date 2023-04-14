@@ -1,26 +1,18 @@
 #!/usr/bin/env bash
-# Updating the package list to install HAproxy
-sudo apt-get update
+# Install and configures HAproxy on a load balancer server
+# Configures HAproxy so that it send traffic to web-01 and web-02 servers
+# Distributes requests using a roundrobin algorithm
+# Makes sure that HAproxy can be managed via an init script
 
-# Installing  HAProxy inside my lb server
-sudo apt-get install -y haproxy
+sudo apt-get -y update
+sudo apt-get -y install haproxy
+# sudo apt-get install --no-install-recommends software-properties-common
+# sudo add-apt-repository ppa:vbernat/haproxy-2.6
+# sudo apt-get install haproxy=2.6.\*
 
-# This script Updates HAProxy configuration file to configure it with my two servers
-sudo tee /etc/haproxy/haproxy.cfg > /dev/null << EOF
-frontend http_front
-    bind *:80
-    default_backend http_back
-backend http_back
-    balance roundrobin
-    server web-01 34.201.164.207 check
-    server web-02 54.84.88.116 check
-EOF
+# Ensures HAproxy can be managed via an init script
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
-# start the load balancer with init
-sudo /etc/init.d/haproxy start
+echo -e "\n# HAproxy for web servers\nfrontend web-frontend\n\tbind *:80\n\tmode http\n\tdefault_backend web-backend\n\nbackend web-backend\n\tbalance roundrobin\n\tserver 128867-web-01 34.201.164.207:80 check\n\tserver 128867-web-02 54.84.88.116:80 check" | sudo tee -a /etc/haproxy/haproxy.cfg
 
-# set HAProxy to start at boot
-sudo update-rc.d haproxy defaults
-
-# reload HAProxy configuration
-sudo /etc/init.d/haproxy reload
+sudo service haproxy restart
