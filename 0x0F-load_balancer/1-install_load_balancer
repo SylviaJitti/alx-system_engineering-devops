@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Updating the package list to install HAproxy
-sudo apt-get update
+sudo apt-get -y update
 
 # Installing  HAProxy inside my lb server
-sudo apt-get install -y haproxy
+sudo apt-get -y install haproxy
 
 # This script Updates HAProxy configuration file to configure it with my two servers
-sudo tee /etc/haproxy/haproxy.cfg > /dev/null << EOF
+sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null << EOF
 frontend http_front
     bind *:80
     default_backend http_back
