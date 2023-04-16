@@ -12,8 +12,8 @@ frontend http_front
     default_backend http_back
 backend http_back
     balance roundrobin
-    server web-01 34.201.164.207 check
-    server web-02 54.84.88.116 check
+    server 96267-web-01 34.201.164.207 check
+    server 96267-web-02 54.84.88.116 check
 EOF
 
 # start the load balancer with init
