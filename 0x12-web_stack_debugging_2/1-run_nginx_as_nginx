@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# a script to change user to nginx to run nginx webserver 
-pkill apache2 
-sed -i 's/#user www-data;/user nginx;/' /etc/nginx/nginx.conf 
-sed -i 's/listen 80 default_server;/listen 8080 default_server;/' /etc/nginx/sites-available/default 
-sed -i 's/listen \[::\]:80/listen \[::\]:8080/' /etc/nginx/sites-available/default 
-service nginx start
+# This script configures nginx to be running as the user nginx and
+# So as for it to be listening on all active ports on port 8080
+sed -i 's/#user www-data;/user nginx;/' /etc/nginx/nginx.conf
+sed -i 's/listen 80 default_server;\n\tlisten [::]:80 default_server ipv6only=on;/listen 8080 default_server;\n\tlisten [::]:8080 default_server ipv6only=on;/' /etc/nginx/sites-available/default
+service nginx restart
