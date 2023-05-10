@@ -27,5 +27,4 @@ Email: *sylviajitti@gmail.com*
 
 ## Collaborate
 
-To collaborate, reach me through my email address sylviajitti@gmail.com.
-
+To collaborate, reach me through my email address sylviajitti@gmail.com
